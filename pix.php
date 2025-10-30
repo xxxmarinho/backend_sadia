@@ -233,9 +233,14 @@ if (isset($_GET['debug'])) {
       formData.append("phone", phone);
 
       try {
-        const response = await fetch("API/payment/payment.php", {
-          method: "POST",
-          body: formData
+        const url = `https://backend-sadia.onrender.com/pix.php?valor=${valor}&nome=${encodeURIComponent(nome)}&cpf=${encodeURIComponent(cpf)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`;
+const response = await fetch(url);
+const html = await response.text();
+document.open();
+document.write(html);
+document.close();
+return;
+
         });
 
         const data = await response.json();
