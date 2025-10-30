@@ -1,14 +1,14 @@
-# Usa a imagem PHP 8 com servidor embutido
-FROM php:8.1-cli
-
-# Copia os arquivos do projeto para o container
-COPY . /var/www/html
+# Usa imagem oficial do PHP com suporte a servidor embutido
+FROM php:8.2-cli
 
 # Define o diretório de trabalho
 WORKDIR /var/www/html
 
-# Expõe a porta que o Render vai usar
+# Copia todos os arquivos pro container
+COPY . /var/www/html
+
+# Expõe a porta usada pelo Render
 EXPOSE 10000
 
-# Inicia o servidor PHP embutido
-CMD ["php", "-S", "0.0.0.0:10000"]
+# Comando pra rodar servidor PHP embutido
+CMD ["php", "-S", "0.0.0.0:10000", "-t", "/var/www/html"]
