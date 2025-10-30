@@ -1,4 +1,16 @@
 <?php
+// ===== LIBERA O FRONTEND DO VERCEL =====
+header("Access-Control-Allow-Origin: https://kitsfamilia2025.vercel.app");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Credentials: true");
+
+// Se for uma requisição OPTIONS (pré-verificação do CORS)
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+?>
 // ===============================
 // CONFIGURAÇÃO BÁSICA
 // ===============================
